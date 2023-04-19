@@ -1,4 +1,6 @@
 import itertools
+import sys
+import argparse
 
 def prompt_user_input():
     user_input = ""
@@ -25,6 +27,11 @@ def generate_leetspeak_combinations(word, leetspeak_dict):
     return list(itertools.product(*word_variations))
 
 def main():
+    parser = argparse.ArgumentParser(description="A leetspeak generator that takes an input string of up to three words and generates all possible leetspeak variations.")
+    parser.add_argument('-i', '--input', type=str, help="Input string containing up to three words, separated by spaces. For multiple words, wrap in quotes")
+    
+    args = parser.parse_args()
+
     leetspeak_dict = {
 		'a': ['4', '@', 'A', 'a'],
 		'b': ['8', 'B', '|3', 'b'],
@@ -55,7 +62,11 @@ def main():
 	    ' ': ['-', '_', ' '],
     }
 
-    input_string = prompt_user_input()
+    if args.input:
+        input_string = args.input
+    else:
+        input_string = prompt_user_input()
+
     combinations = generate_leetspeak_combinations(input_string, leetspeak_dict)
     for combo in combinations:
         print("".join(combo))
