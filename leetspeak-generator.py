@@ -29,21 +29,24 @@ def generate_leetspeak_combinations(word, leetspeak_dict):
 def main():
     parser = argparse.ArgumentParser(description="A leetspeak generator that takes an input string of up to three words and generates all possible leetspeak variations.")
     parser.add_argument('-i', '--input', type=str, help="Input string containing up to three words, separated by spaces. For multiple words, wrap in quotes")
+    parser.add_argument('-o', '--output', type=str, help="Output file name. If not specified, output will be printed to the screen")
     args = parser.parse_args()
 
+
+
     leetspeak_dict = {
-                'a': ['4', '@', 'A', 'a'],
-                'b': ['8', 'B', '|3', 'b'],
+                'a': ['4', '@', 'A', 'a', '/\\', '/-\\'],
+                'b': ['8', 'B', '|3', 'b', '13', '!3', '6', 'I3', '!3', '/3'],
                 'c': ['(', '[', '{', '<', 'C', 'c'],
-                'd': ['|)', '|]', 'D', 'd'],
-                'e': ['3', 'E', 'e'],
-                'f': ['|=', 'F', 'f'],
-                'g': ['6', '9', 'G', 'g'],
-                'h': ['#', '|-|', 'H', 'h'],
-                'i': ['1', '!', '|', 'I', 'i'],
+                'd': ['|)', '|]', 'D', 'd', 'cl', 'cI', 'I)', 'I]'],
+                'e': ['3', 'E', 'e', '[-'],
+                'f': ['|=', 'F', 'f', '/=', 'I=', 'ph'],
+                'g': ['6', '9', 'G', 'g', '(_-', '(_+', 'C-', '[,'],
+                'h': ['#', '|-|', 'H', 'h', '|~|', 'I-I', 'I~I', ']-[', ']~[', '}{', ')-(', '(-)', ')~(', '(~)'],
+                'i': ['1', '!', '|', 'I', 'i', '[]'],
                 'j': ['_|', 'J', 'j'],
-                'k': ['|<', 'K', 'k'],
-                'l': ['1', '|_', 'L', 'l'],
+                'k': ['|<', 'K', 'k', '|c', 'Ic', '|{', '|('],
+                'l': ['1', '|_', 'L', 'l', '|', '7'],
                 'm': ['|\\/|', 'M', 'm'],
                 'n': ['|\\|', 'N', 'n'],
                 'o': ['0', 'O', 'o'],
@@ -51,14 +54,14 @@ def main():
                 'q': ['(,)', 'Q', 'q'],
                 'r': ['|2', 'R', 'r'],
                 's': ['5', '$', 'S', 's'],
-                't': ['7', '+', 'T', 't'],
-                'u': ['|_|', 'U', 'u'],
+                't': ['7', '+', 'T', 't', '-|-', '~|~'],
+                'u': ['|_|', 'U', 'u', '(_)', 'L|'],
                 'v': ['\\/', 'V', 'v'],
-                'w': ['\\|/', '\\^/', 'W', '\\\/\\\/', 'w', '\\/\\/'],
+                'w': ['\\/\\/', 'VV', '\\N', '\'//', '\\\'', '\\^/', '(n)', '\\V/', '\\X/', '\\|/', '\\_|_/', '\\_:_/', 'uu', '2u', '\\\\//\\\\//', 'w', 'W']
                 'x': ['%', '><', 'X', 'x'],
-                'y': ['`/', 'Y', 'y'],
-                'z': ['2', 'Z', 'z'],
-            ' ': ['-', '_', ' '],
+	        'y': ['j', '`/', '7', '\\|/', '\\//', 'Y', 'y']
+                'z': ['2', '7_', '-/_', '%', '>', 's', '~/_', '-\\_', '-|_', 'z', 'Z']
+                ' ': ['-', '_', ' '],
     }
 
     if args.input:
@@ -67,8 +70,14 @@ def main():
         input_string = prompt_user_input()
 
     combinations = generate_leetspeak_combinations(input_string, leetspeak_dict)
-    for combo in combinations:
-        print("".join(combo))
+
+    if args.output:
+        with open(args.output, 'w') as f:
+            for combo in combinations:
+                f.write("".join(combo) + '\n')
+    else:
+        for combo in combinations:
+            print("".join(combo))
 
 if __name__ == "__main__":
     main()
