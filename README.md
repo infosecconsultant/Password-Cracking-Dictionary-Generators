@@ -1,6 +1,6 @@
 # Password Cracking Dictionary Generators
 
-This is a collection of small scripts and tools that can help in password cracking dictionary generation. Especailly useful if you have an idea about what the expected password might be.
+This is a collection of small scripts and tools that can help in password cracking dictionary generation. Especially useful if you have an idea about what the expected password might be.
 
 # Leetspeak Generator (Python) (leetspeak-generator.py)
 
