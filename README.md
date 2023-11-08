@@ -46,3 +46,27 @@ The leetspeak character substitutions are defined in a dictionary within the scr
 ## ToDo 
 
 Add more variation from: https://www.gamehouse.com/blog/leet-speak-cheat-sheet/
+
+
+---------------
+
+# Case Permutation Generator (Python and C) 
+
+A generator that takes an input string and generates all possible upper/lowercase combinations of that word. 
+
+## Overview
+
+A quick script to generate all possible combinations of upper and lowercase characters for any given (pass)word. Ignores special/numerical characters. Pretty quick as long as the length of your input word is reasonable.
+
+## How to Use
+
+If you only provide the word and no output file, it will print the permutations to the screen.
+
+### Interactive Mode (default)
+
+- Run the script using the following command: `python script.py`
+
+### Direct Input Mode
+
+- Run the script using the following command: `python script.py example output.txt`
+
