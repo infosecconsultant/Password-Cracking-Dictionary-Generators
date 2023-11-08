@@ -1,4 +1,8 @@
-# Leetspeak Generator
+# Password Cracking Dictionary Generators
+
+This is a collection of small scripts and tools that can help in password cracking dictionary generation. Especailly useful if you have an idea about what the expected password might be.
+
+# Leetspeak Generator (Python) (leetspeak-generator.py)
 
 A Python-based leetspeak generator that takes an input string of up to three words and generates all possible leetspeak variations.
 
@@ -50,9 +54,7 @@ Add more variation from: https://www.gamehouse.com/blog/leet-speak-cheat-sheet/
 
 ---------------
 
-# Case Permutation Generator (Python and C) 
-
-A generator that takes an input string and generates all possible upper/lowercase combinations of that word. 
+# Case Permutation Generator (Python and C) (case-permutation (.py/.c))
 
 ## Overview
 
@@ -62,11 +64,32 @@ A quick script to generate all possible combinations of upper and lowercase char
 
 If you only provide the word and no output file, it will print the permutations to the screen.
 
+### Compile the C program 
+
+-  Compile with `gcc -O3 -march=native -o case-permutation case-permutation.c`
+
 ### Interactive Mode (default)
 
-- Run the script using the following command: `python script.py`
+- Run the script using the following command: `python case-permutation.py`
 
 ### Direct Input Mode
 
-- Run the script using the following command: `python script.py example output.txt`
+- Run the script using the following command: `python case-permutation.py example output.txt`
 
+
+---------------
+
+# Case Swapping Generator (Python) (swapcase.py)
+
+
+## Overview
+
+A generator that takes an input file and swaps upper/lowercase per character for that word. Simulatiting if someone left capslock on and still used shift for example. 
+
+## How to Use
+
+If you only provide the dictionary input and no output file, it will print the permutations to the screen.
+
+### Direct Input Mode
+
+- Run the script using the following command: `python swapcase.py -i dictionary.txt -o output.txt`
