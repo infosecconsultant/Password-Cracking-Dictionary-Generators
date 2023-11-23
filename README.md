@@ -93,3 +93,30 @@ If you only provide the dictionary input and no output file, it will print the p
 ### Direct Input Mode
 
 - Run the script using the following command: `python swapcase.py -i dictionary.txt -o output.txt`
+
+
+
+---------------
+
+# Keyboard Walker (Python) (keyboard_walk.py)
+
+
+## Overview
+
+A generator that lets you specify a keyboard layout and then generates a 'walk' along the keys of arbitrary length. For example 1q2w3e or qwerty
+
+## How to Use
+
+If you only provide the dictionary input and no output file, it will print the permutations to the screen.
+- Run the script using the following command: `python3 keyboard_walk.py -l 4 -o walking-4-shifted2 -k qwertyshifted2`
+
+```
+options:
+  -h, --help            show this help message and exit
+  -l LENGTH, --length LENGTH
+                        Length of the walks
+  -o OUTPUT, --output OUTPUT
+                        Output file name
+  -k {qwerty,qwertyshifted,qwertyshifted1,qwertyshifted2,dvorak,azerty}, --layout {qwerty,qwertyshifted,qwertyshifted1,qwertyshifted2,dvorak,azerty}
+                        Keyboard layout
+```
