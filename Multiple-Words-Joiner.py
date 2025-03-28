@@ -12,7 +12,7 @@ def load_words_from_dict(file_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate a wordlist of all permutations of input words."
+        description="Generate a wordlist of combinations from input words or dictionary files."
     )
     parser.add_argument(
         "-i", "--input",
@@ -51,24 +51,26 @@ def main():
     )
     args = parser.parse_args()
 
-    # Determine the source of words.
+    # If any dictionary files are provided, use them in a Cartesian product.
     if args.dict1 or args.dict2 or args.dict3:
-        words = []
+        dict_lists = []
         for dict_file in (args.dict1, args.dict2, args.dict3):
             if dict_file:
-                words.extend(load_words_from_dict(dict_file))
+                words = load_words_from_dict(dict_file)
+                dict_lists.append(words)
+        # Produce every possible combination: one word from each provided dictionary.
+        combinations = itertools.product(*dict_lists)
     elif args.input:
         words = args.input.split(',')
+        # Produce all possible permutations of the comma-separated words.
+        combinations = itertools.permutations(words, len(words))
     else:
-        parser.error("You must provide either a comma separated input (-i) or at least one dictionary file (--dict1, --dict2, --dict3).")
+        parser.error("You must provide either a comma separated input (-i) or at least one dictionary file (--dict1, --dict2, or --dict3).")
     
-    # Generate all possible permutations of the input words.
-    permutations = itertools.permutations(words, len(words))
-
-    # Write each permutation to the output file with optional prepend and delimiter.
+    # Write each combination/permutation to the output file with optional prepend and delimiter.
     with open(args.output, "w", encoding="utf-8") as f:
-        for perm in permutations:
-            line = args.prepend + args.delimiter.join(perm)
+        for combo in combinations:
+            line = args.prepend + args.delimiter.join(combo)
             f.write(line + "\n")
 
 if __name__ == "__main__":
